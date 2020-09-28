@@ -1,0 +1,8 @@
+<h2>Log in</h2>
+
+<%= form_for :session, url: create_path do |f| %>
+  Name: <%= f.text_field :name %><br /><br />
+  <%= f.submit 'Log in' %>
+<% end %>
+
+<%= link_to 'Create a new user', new_user_path %>
