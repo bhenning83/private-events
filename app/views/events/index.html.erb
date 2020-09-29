@@ -1,0 +1,6 @@
+<h1>All Events</h1>
+
+<% @events.each do |e| %>
+  <p><%= link_to e.name, event_path(e.id) %>
+  — event created by: <%= e.creator.name %></p>
+<% end %>

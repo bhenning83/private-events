@@ -1,0 +1,17 @@
+<h2><%= @event.name %></h2>
+
+<h4>Event Details</h4>
+<ul>
+  <li>
+    <p>Date: <%= @event.date %></p>
+  </li>
+  <li>
+    <p>Location: <%= @event.location %></p>
+  </li>
+  <li>
+    <p>Description <%= @event.description %></p>
+  </li>
+</ul>
+
+<%= link_to 'View all events', events_path %><br />
+<%= link_to 'View profile', user_path(current_user.id) %>
