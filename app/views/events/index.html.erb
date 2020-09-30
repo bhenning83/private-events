@@ -1,6 +1,11 @@
 <h1>All Events</h1>
 
-<% @events.each do |e| %>
-  <p><%= link_to e.name, event_path(e.id) %>
-  — event created by: <%= e.creator.name %></p>
-<% end %>
+<h3>Upcoming Events:</h3>
+<%= render 'shared/events_list', object: @events.upcoming %>
+
+<h3>Previous Events:</h3>
+<%= render 'shared/events_list', object: @events.past %>
+
+
+<%= link_to 'Create a new event', new_event_path %><br />
+<%= link_to 'Go to your profile', user_path(current_user.id) %>

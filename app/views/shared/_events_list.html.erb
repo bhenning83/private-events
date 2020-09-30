@@ -1,0 +1,13 @@
+<% if object.any? %>  
+  <ul>
+    <% object.each do |e| %>
+      <li>
+        <strong><%= e.name %></strong>,
+        <%= e.date %>
+        <%= link_to 'View Event', event_path(e.id) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <em>None</em>
+<% end %>

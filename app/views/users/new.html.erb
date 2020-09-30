@@ -5,6 +5,9 @@
   <%= f.submit%>
 <% end %>
 
+<p>Already have an account?
+<%= link_to "Log in", login_path %></p>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this account from being saved:</h2>

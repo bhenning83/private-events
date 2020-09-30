@@ -1,15 +1,15 @@
 <h1><%= @user.name %>'s page</h1>
 
-<h3>Your Created Events:</h3>
-<ul>
-  <% @user.created_events.each do |e| %>
-    <li>
-      <strong><%= e.name %></strong>
-      <%= e.date %>
-      <%= link_to 'View Event', event_path %>
-    </li>
-  <% end %>
-</ul>
+<h3>Events You Created:</h3>
+<%= render 'shared/events_list', object: @user.created_events%>
 
+<h3>Upcoming Events:</h3>
+<%= render 'shared/events_list', object: @user.attended_events.upcoming%>
+
+<h3>Previously Attended Events:</h3>
+<%= render 'shared/events_list', object: @user.attended_events.past %>
+
+
+<%= link_to 'View all events', events_path %><br />
 <%= link_to 'Create a new event', new_event_path %><br />
 <%= link_to 'Log Out', logout_path %>

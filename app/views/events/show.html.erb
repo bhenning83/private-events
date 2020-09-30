@@ -3,15 +3,33 @@
 <h4>Event Details</h4>
 <ul>
   <li>
-    <p>Date: <%= @event.date %></p>
+    <p><strong>Date:</strong> <%= @event.date %></p>
   </li>
   <li>
-    <p>Location: <%= @event.location %></p>
+    <p><strong>Location:</strong> <%= @event.location %></p>
   </li>
   <li>
-    <p>Description <%= @event.description %></p>
+    <p><strong>Description:</strong> <%= @event.description %></p>
   </li>
 </ul>
+
+<h4>Event Attendees:</h4>
+<% if !@event.attendees.any? %>
+  <% if @event.date.past? %>
+    <h5>This event had no attendees :(</h5>
+  <% else %>
+    <h5>Be the first to rsvp to this event!</h5>
+  <% end %>
+<% else %>
+  <ul>
+    <% @event.attendees.take(10).each do |a| %>
+      <li><%= a.name %></li>
+    <% end %>
+    <%= '...' if @event.attendees.size > 10 %>
+  </ul>
+<% end %>
+<%= render 'attendance_form' %>
+
 
 <%= link_to 'View all events', events_path %><br />
 <%= link_to 'View profile', user_path(current_user.id) %>

@@ -20,6 +20,13 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def attend
+    @event = Event.find(params[:id])
+    @event.attendees << current_user
+    redirect_to user_path(current_user.id)
+  end
+
+
   private
 
   def event_params

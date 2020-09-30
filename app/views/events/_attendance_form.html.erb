@@ -1,0 +1,14 @@
+<% if !logged_in? %>
+  <p>
+    <%= link_to "Login", login_path %> or 
+    <%= link_to "Signup", new_user_path %> now
+    to attend this event!
+  </p>
+  <% elsif @event.date.past? %>
+    <p>This event has passed.</p>
+  <% elsif @event.attendees.include? current_user %>
+    <p>You're attending this event!</p>
+  <% else %>
+    <%= button_to 'attend', attend_path, 
+                           data: {confirm: "You're attending #{@event.name}!"} %>
+<% end %>
